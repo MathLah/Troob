@@ -3,29 +3,54 @@
 namespace Troob\ApiBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation\ExclusionPolicy;
+use JMS\Serializer\Annotation\Expose;
 
 /**
  * Band
+ *
+ * @ORM\Entity
+ * @ORM\Table(name="band",uniqueConstraints={@ORM\UniqueConstraint(name="name_unique", columns={"name"})})
+ * 
+ * @ExclusionPolicy("all")
  */
 class Band
 {
     /**
      * @var integer
+     * 
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * 
+     * @Expose
      */
     private $id;
 
     /**
      * @var string
+     * 
+     * @ORM\Column(name="name", type="string", length=255)
+     * 
+     * @Expose
      */
     private $name;
 
     /**
      * @var string
+     * 
+     * @ORM\Column(name="homepage", type="string", length=255)
+     * 
+     * @Expose
      */
     private $homepage;
 
     /**
      * @var string
+     * 
+     * @ORM\Column(name="wikipage", type="string", length=255)
+     * 
+     * @Expose
      */
     private $wikipage;
 

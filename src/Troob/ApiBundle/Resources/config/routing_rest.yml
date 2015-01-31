@@ -1,4 +1,4 @@
-album :
+band :
     type: rest
     resource: "TroobApiBundle:Default"
     name_prefix: api_
