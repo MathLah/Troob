@@ -1,0 +1,19 @@
+Troob\ApiBundle\Entity\Band:
+    type: entity
+    table: null
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        name:
+            type: string
+            length: 255
+        homepage:
+            type: string
+            length: 255
+        wikipage:
+            type: string
+            length: 255
+    lifecycleCallbacks: {  }

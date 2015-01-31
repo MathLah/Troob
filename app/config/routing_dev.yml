@@ -16,3 +16,8 @@ _main:
 # AcmeDemoBundle routes (to be removed)
 _acme_demo:
     resource: "@AcmeDemoBundle/Resources/config/routing.yml"
+
+troobapi : 
+  type : rest 
+  prefix : /api
+  resource: "@TroobApiBundle/Resources/config/routing_rest.yml"
