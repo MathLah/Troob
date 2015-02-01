@@ -4,13 +4,16 @@ namespace Troob\ApiBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Troob\ApiBundle\Entity\Band;
 use Troob\ApiBundle\Form\BandType;
 
 /**
  * Band controller.
  *
+ * @Route("/band")
  */
 class BandController extends Controller
 {
@@ -18,6 +21,9 @@ class BandController extends Controller
     /**
      * Lists all Band entities.
      *
+     * @Route("/", name="band")
+     * @Method("GET")
+     * @Template()
      */
     public function indexAction()
     {
@@ -25,13 +31,16 @@ class BandController extends Controller
 
         $entities = $em->getRepository('TroobApiBundle:Band')->findAll();
 
-        return $this->render('TroobApiBundle:Band:index.html.twig', array(
+        return array(
             'entities' => $entities,
-        ));
+        );
     }
     /**
      * Creates a new Band entity.
      *
+     * @Route("/", name="band_create")
+     * @Method("POST")
+     * @Template("TroobApiBundle:Band:new.html.twig")
      */
     public function createAction(Request $request)
     {
@@ -47,10 +56,10 @@ class BandController extends Controller
             return $this->redirect($this->generateUrl('band_show', array('id' => $entity->getId())));
         }
 
-        return $this->render('TroobApiBundle:Band:new.html.twig', array(
+        return array(
             'entity' => $entity,
             'form'   => $form->createView(),
-        ));
+        );
     }
 
     /**
@@ -75,21 +84,27 @@ class BandController extends Controller
     /**
      * Displays a form to create a new Band entity.
      *
+     * @Route("/new", name="band_new")
+     * @Method("GET")
+     * @Template()
      */
     public function newAction()
     {
         $entity = new Band();
         $form   = $this->createCreateForm($entity);
 
-        return $this->render('TroobApiBundle:Band:new.html.twig', array(
+        return array(
             'entity' => $entity,
             'form'   => $form->createView(),
-        ));
+        );
     }
 
     /**
      * Finds and displays a Band entity.
      *
+     * @Route("/{id}", name="band_show")
+     * @Method("GET")
+     * @Template()
      */
     public function showAction($id)
     {
@@ -103,15 +118,18 @@ class BandController extends Controller
 
         $deleteForm = $this->createDeleteForm($id);
 
-        return $this->render('TroobApiBundle:Band:show.html.twig', array(
+        return array(
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),
-        ));
+        );
     }
 
     /**
      * Displays a form to edit an existing Band entity.
      *
+     * @Route("/{id}/edit", name="band_edit")
+     * @Method("GET")
+     * @Template()
      */
     public function editAction($id)
     {
@@ -126,11 +144,11 @@ class BandController extends Controller
         $editForm = $this->createEditForm($entity);
         $deleteForm = $this->createDeleteForm($id);
 
-        return $this->render('TroobApiBundle:Band:edit.html.twig', array(
+        return array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
-        ));
+        );
     }
 
     /**
@@ -154,6 +172,9 @@ class BandController extends Controller
     /**
      * Edits an existing Band entity.
      *
+     * @Route("/{id}", name="band_update")
+     * @Method("PUT")
+     * @Template("TroobApiBundle:Band:edit.html.twig")
      */
     public function updateAction(Request $request, $id)
     {
@@ -175,15 +196,17 @@ class BandController extends Controller
             return $this->redirect($this->generateUrl('band_edit', array('id' => $id)));
         }
 
-        return $this->render('TroobApiBundle:Band:edit.html.twig', array(
+        return array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
-        ));
+        );
     }
     /**
      * Deletes a Band entity.
      *
+     * @Route("/{id}", name="band_delete")
+     * @Method("DELETE")
      */
     public function deleteAction(Request $request, $id)
     {

@@ -18,6 +18,7 @@ class BandType extends AbstractType
             ->add('name')
             ->add('homepage')
             ->add('wikipage')
+            ->add('image')
         ;
     }
     

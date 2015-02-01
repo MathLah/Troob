@@ -54,6 +54,14 @@ class Band
      */
     private $wikipage;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="image", type="string", length=255)
+     *
+     * @Expose
+     */
+    private $image;
 
     /**
      * Get id
@@ -132,5 +140,28 @@ class Band
     public function getWikipage()
     {
         return $this->wikipage;
+    }
+
+    /**
+     * Set wikipage
+     *
+     * @param string $wikipage
+     * @return Band
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+    
+        return $this;
+    }
+
+    /**
+     * Get wikipage
+     *
+     * @return string 
+     */
+    public function getImage()
+    {
+        return $this->image;
     }
 }

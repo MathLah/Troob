@@ -7,7 +7,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 use Troob\ApiBundle\Entity\Band;
-use Troob\ApiBundle\Form\BandType;
 
 /**
  * Band controller.
@@ -59,7 +58,8 @@ class BandApiController extends Controller
 		$entity->setName($request->request->get('name'));
 		$entity->setWikipage($request->request->get('wikipage'));
 		$entity->setHomepage($request->request->get('homepage'));
-
+		$entity->setImage($request->request->get('image'));
+		
 		$em = $this->getDoctrine()->getManager();
         $em->persist($entity);
 		$em->flush();
@@ -81,6 +81,7 @@ class BandApiController extends Controller
     	$entity->setName($request->request->get('name'));
     	$entity->setWikipage($request->request->get('wikipage'));
     	$entity->setHomepage($request->request->get('homepage'));
+		$entity->setImage($request->request->get('image'));
     	
     	$em->persist($entity);
     	$em->flush();
