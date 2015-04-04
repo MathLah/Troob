@@ -7,13 +7,15 @@ use Doctrine\ORM\Mapping\ManyToMany as ManyToMany;
 use Doctrine\ORM\Mapping\JoinTable as JoinTable;
 use Doctrine\ORM\Mapping\JoinColumn;
 
+use Troob\ApiBundle\Entity\Album;
+
 /**
- * Album
+ * Music
  *
  * @ORM\Table()
  * @ORM\Entity
  */
-class Album
+class Music
 {
     /**
      * @var integer
@@ -32,21 +34,14 @@ class Album
     private $name;
 
     /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="release", type="date")
-     */
-    private $release;    
-    
-	/**
-     * @ManyToMany(targetEntity="Band")
-     * @JoinTable(name="AssocAlbumBand",
-     *      joinColumns={@JoinColumn(name="aid", referencedColumnName="id")},
-     *      inverseJoinColumns={@JoinColumn(name="bid", referencedColumnName="id", unique=true)}
+     * @ManyToMany(targetEntity="Album")
+     * @JoinTable(name="AssocAlbumMusic",
+     *      joinColumns={@JoinColumn(name="mid", referencedColumnName="id")},
+     *      inverseJoinColumns={@JoinColumn(name="aid", referencedColumnName="id", unique=true)}
      *      )
      */
-    private $bands;
-
+    private $albums;
+    
     /**
      * Get id
      *
@@ -61,7 +56,7 @@ class Album
      * Set name
      *
      * @param string $name
-     * @return Album
+     * @return Music
      */
     public function setName($name)
     {
@@ -81,48 +76,25 @@ class Album
     }
 
     /**
-     * Set release
+     * Set albums
      *
-     * @param \DateTime $release
-     * @return Album
+     * @param string $albums
+     * @return Music
      */
-    public function setRelease($release)
+    public function setAlbums($albums)
     {
-        $this->release = $release;
+        $this->albums = $albums;
     
         return $this;
     }
 
     /**
-     * Get release
+     * Get albums
      *
-     * @return \DateTime 
+     * @return string 
      */
-    public function getRelease()
+    public function getAlbums()
     {
-        return $this->release;
-    }
-
-    /**
-     * Set bands
-     *
-     * @param string $bands
-     * @return Album
-     */
-    public function setBands($bands)
-    {
-    	$this->bands = $bands;
-    
-    	return $this;
-    }
-    
-    /**
-     * Get bands
-     *
-     * @return string
-     */
-    public function getBands()
-    {
-    	return $this->bands;
+        return $this->albums;
     }
 }

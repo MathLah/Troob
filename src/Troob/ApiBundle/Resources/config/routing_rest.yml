@@ -7,3 +7,8 @@ album :
     type: rest
     resource: "TroobApiBundle:AlbumApi"
     name_prefix: api_
+    
+music :
+    type: rest
+    resource: "TroobApiBundle:MusicApi"
+    name_prefix: api_

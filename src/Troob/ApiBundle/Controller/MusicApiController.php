@@ -6,42 +6,43 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
+use Troob\ApiBundle\Entity\Music;
 use Troob\ApiBundle\Entity\Album;
 
 /**
- * Album controller.
+ * Music controller.
  *
  */
-class AlbumApiController extends Controller
+class MusicApiController extends Controller
 {
 
     /**
-     * Lists all Album entities.
+     * Lists all Music entities.
      *
      * @Method("GET")
      * @Template()
      */
-    public function getAlbumsAction()
+    public function getMusicsAction()
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('TroobApiBundle:Album')->findAll();
+        $entities = $em->getRepository('TroobApiBundle:Music')->findAll();
 
         return $entities;
     }
 
     /**
-     * Get one Album entitie by aid
+     * Get one Music entitie by aid
      *
      * @Method("GET")
      * @Template()
      */
-    public function getAlbumAction($id)
+    public function getMusicAction($id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('TroobApiBundle:Album')->findOneById($id);
-        
+        $entities = $em->getRepository('TroobApiBundle:Music')->find($id);
+
         return $entities;
     }
 
@@ -49,15 +50,14 @@ class AlbumApiController extends Controller
      * @Method("post")
      * @param unknown $post
      */
-    public function postAlbumsAction()
+    public function postMusicsAction()
     {
     	$request = $this->getRequest();
     	
-		$entity = new Album();
+		$entity = new Music();
 		
 		$entity->setName($request->request->get('name'));
-		$entity->setRelease(new \DateTime($request->request->get('release')));
-    	$entity->setBands($this->bandsFromRequestArray($request->request->get('bands')));
+    	$entity->setAlbums($this->albumsFromRequestArray($request->request->get('albums')));
 		
 		$em = $this->getDoctrine()->getManager();
         $em->persist($entity);
@@ -70,16 +70,15 @@ class AlbumApiController extends Controller
      * @Method("put")
      * @param unknown $post
      */
-    public function putAlbumsAction($id)
+    public function putMusicsAction($id)
     {
     	$em = $this->getDoctrine()->getManager();
-    	$entity = $em->getRepository('TroobApiBundle:Album')->find($id);
+    	$entity = $em->getRepository('TroobApiBundle:Music')->find($id);
     	
     	$request = $this->getRequest();
 
     	$entity->setName($request->request->get('name'));
-		$entity->setRelease(new \DateTime($request->request->get('release')));
-    	$entity->setBands($this->bandsFromRequestArray($request->request->get('bands')));
+    	$entity->setAlbums($this->albumsFromRequestArray($request->request->get('albums')));
     	
     	$em->persist($entity);
     	$em->flush();
@@ -88,20 +87,20 @@ class AlbumApiController extends Controller
     }
     
     /**
-     * Return an array of Band from an array of arrays
+     * Return an array of Album from an array of arrays
      * 
-     * @param array $data_bands
+     * @param array $data_albums
      * @return array
      */
-    private function bandsFromRequestArray($data_bands) {
-    	$bands = array();
+    private function albumsFromRequestArray($data_albums) {
+    	$albums = array();
     	$em = $this->getDoctrine()->getManager();
-    	foreach ($data_bands as $b) {
-    		$band = $em->getRepository('TroobApiBundle:Band')->findOneById($b['id']);
-    		$bands[] = $band;
+    	foreach ($data_albums as $a) {
+    		$album = $em->getRepository('TroobApiBundle:Album')->findOneById($a['id']);
+    		$albums[] = $album;
     	}
     
-    	return $bands;
+    	return $albums;
     }
     
     /**
@@ -109,10 +108,10 @@ class AlbumApiController extends Controller
      * @Method("delete")
      * @param unknown $post
      */
-    public function deleteAlbumsAction($id)
+    public function deleteMusicsAction($id)
     {
     	$em = $this->getDoctrine()->getManager();
-    	$entity = $em->getRepository('TroobApiBundle:Album')->find($id);
+    	$entity = $em->getRepository('TroobApiBundle:Music')->find($id);
     	$em->remove($entity);
     	$em->flush();
     }
