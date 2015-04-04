@@ -5,6 +5,9 @@ namespace Troob\ApiBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation\ExclusionPolicy;
 use JMS\Serializer\Annotation\Expose;
+use Doctrine\ORM\Mapping\ManyToMany as ManyToMany;
+use Doctrine\ORM\Mapping\JoinTable as JoinTable;
+use Doctrine\ORM\Mapping\JoinColumn;
 
 /**
  * Band
@@ -62,7 +65,7 @@ class Band
      * @Expose
      */
     private $image;
-
+    
     /**
      * Get id
      *

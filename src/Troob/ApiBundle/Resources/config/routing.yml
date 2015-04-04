@@ -59,3 +59,34 @@ album_delete:
     path:     /album/{id}/delete
     defaults: { _controller: "TroobApiBundle:Album:delete" }
     requirements: { _method: post|delete }
+    
+music:
+    path:     /music/
+    defaults: { _controller: "TroobApiBundle:Music:index" }
+
+music_show:
+    path:     /music/{id}/show
+    defaults: { _controller: "TroobApiBundle:Music:show" }
+
+music_new:
+    path:     /music/new
+    defaults: { _controller: "TroobApiBundle:Music:new" }
+
+music_create:
+    path:     /music/create
+    defaults: { _controller: "TroobApiBundle:Music:create" }
+    requirements: { _method: post }
+
+music_edit:
+    path:     /music/{id}/edit
+    defaults: { _controller: "TroobApiBundle:Music:edit" }
+
+music_update:
+    path:     /music/{id}/update
+    defaults: { _controller: "TroobApiBundle:Music:update" }
+    requirements: { _method: post|put }
+
+music_delete:
+    path:     /music/{id}/delete
+    defaults: { _controller: "TroobApiBundle:Music:delete" }
+    requirements: { _method: post|delete }
