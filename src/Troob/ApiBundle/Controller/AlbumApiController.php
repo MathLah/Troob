@@ -56,9 +56,7 @@ class AlbumApiController extends Controller
 		$entity = new Album();
 		
 		$entity->setName($request->request->get('name'));
-		$entity->setWikipage($request->request->get('wikipage'));
-		$entity->setHomepage($request->request->get('homepage'));
-		$entity->setImage($request->request->get('image'));
+		$entity->setRelease(new \DateTime($request->request->get('release')));
 		
 		$em = $this->getDoctrine()->getManager();
         $em->persist($entity);
@@ -79,9 +77,7 @@ class AlbumApiController extends Controller
     	$request = $this->getRequest();
 
     	$entity->setName($request->request->get('name'));
-    	$entity->setWikipage($request->request->get('wikipage'));
-    	$entity->setHomepage($request->request->get('homepage'));
-		$entity->setImage($request->request->get('image'));
+		$entity->setRelease(new \DateTime($request->request->get('release')));
     	
     	$em->persist($entity);
     	$em->flush();
