@@ -2,3 +2,8 @@ band :
     type: rest
     resource: "TroobApiBundle:BandApi"
     name_prefix: api_
+    
+album :
+    type: rest
+    resource: "TroobApiBundle:AlbumApi"
+    name_prefix: api_
