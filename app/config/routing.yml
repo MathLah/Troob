@@ -1,0 +1,4 @@
+troob_api:
+    resource: "@TroobApiBundle/Resources/config/routing.yml"
+    prefix:   /
+

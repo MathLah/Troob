@@ -1,0 +1,4 @@
+band :
+    type: rest
+    resource: "TroobApiBundle:BandApi"
+    name_prefix: api_
