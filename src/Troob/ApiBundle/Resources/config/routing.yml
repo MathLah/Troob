@@ -1,30 +1,61 @@
 band:
-    path:     /
+    path:     /band/
     defaults: { _controller: "TroobApiBundle:Band:index" }
 
 band_show:
-    path:     /{id}/show
+    path:     /band/{id}/show
     defaults: { _controller: "TroobApiBundle:Band:show" }
 
 band_new:
-    path:     /new
+    path:     /band/new
     defaults: { _controller: "TroobApiBundle:Band:new" }
 
 band_create:
-    path:     /create
+    path:     /band/create
     defaults: { _controller: "TroobApiBundle:Band:create" }
     requirements: { _method: post }
 
 band_edit:
-    path:     /{id}/edit
+    path:     /band/{id}/edit
     defaults: { _controller: "TroobApiBundle:Band:edit" }
 
 band_update:
-    path:     /{id}/update
+    path:     /band/{id}/update
     defaults: { _controller: "TroobApiBundle:Band:update" }
     requirements: { _method: post|put }
 
 band_delete:
-    path:     /{id}/delete
+    path:     /band/{id}/delete
     defaults: { _controller: "TroobApiBundle:Band:delete" }
+    requirements: { _method: post|delete }
+    
+album:
+    path:     /album/
+    defaults: { _controller: "TroobApiBundle:Album:index" }
+
+album_show:
+    path:     /album/{id}/show
+    defaults: { _controller: "TroobApiBundle:Album:show" }
+
+album_new:
+    path:     /album/new
+    defaults: { _controller: "TroobApiBundle:Album:new" }
+
+album_create:
+    path:     /album/create
+    defaults: { _controller: "TroobApiBundle:Album:create" }
+    requirements: { _method: post }
+
+album_edit:
+    path:     /album/{id}/edit
+    defaults: { _controller: "TroobApiBundle:Album:edit" }
+
+album_update:
+    path:     /album/{id}/update
+    defaults: { _controller: "TroobApiBundle:Album:update" }
+    requirements: { _method: post|put }
+
+album_delete:
+    path:     /album/{id}/delete
+    defaults: { _controller: "TroobApiBundle:Album:delete" }
     requirements: { _method: post|delete }
