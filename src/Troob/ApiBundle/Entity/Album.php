@@ -42,7 +42,7 @@ class Album
      * @ManyToMany(targetEntity="Band")
      * @JoinTable(name="AssocAlbumBand",
      *      joinColumns={@JoinColumn(name="aid", referencedColumnName="id")},
-     *      inverseJoinColumns={@JoinColumn(name="bid", referencedColumnName="id", unique=true)}
+     *      inverseJoinColumns={@JoinColumn(name="bid", referencedColumnName="id")}
      *      )
      */
     private $bands;
