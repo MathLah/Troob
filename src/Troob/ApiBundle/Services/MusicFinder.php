@@ -32,20 +32,6 @@ class MusicFinder {
 		foreach ($finder as $file) {
 			$this->createData($file);
 		}
-
-// 		$this->compare();
-// 		return 
-	}
-	
-	function compare() {
-		$em = $this->doctrine->getManager();
-		
-		$entities = $em->getRepository('TroobApiBundle:Music')->findAll();
-		
-		foreach ($entities as $e) {
-		}
-		
-		return $entities;
 	}
 	
 	function createData($file) {
