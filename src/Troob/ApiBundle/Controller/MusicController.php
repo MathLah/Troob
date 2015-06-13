@@ -9,6 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Troob\ApiBundle\Entity\Music;
 use Troob\ApiBundle\Form\MusicType;
+use Troob\ApiBundle\Services\MusicFinder;
 
 /**
  * Music controller.
@@ -17,6 +18,12 @@ use Troob\ApiBundle\Form\MusicType;
  */
 class MusicController extends Controller
 {
+	
+	public function brosweAction() {
+		$finder = new MusicFinder("../music", 'mp3',$this->getDoctrine());
+// 		$finder = new MusicFinder("/media/mathieu/Stock/Musique");
+		$finder->broswe();
+	}
 
     /**
      * Lists all Music entities.

@@ -1,7 +1,7 @@
 parameters:
-#    troob_api.example.class: Troob\ApiBundle\Example
 
 services:
-#    troob_api.example:
-#        class: %troob_api.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
+    app.cors_listener:
+        class:      Troob\ApiBundle\Services\Cors
+        tags:
+           - { name: kernel.event_listener, event: kernel.response, method: onKernelResponse }

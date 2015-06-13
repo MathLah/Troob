@@ -18,11 +18,12 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
         	new JMS\SerializerBundle\JMSSerializerBundle($this),
         	new FOS\RestBundle\FOSRestBundle(),
+        		
+        		
             new Troob\ApiBundle\TroobApiBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
-//             $bundles[] = new Acme\DemoBundle\AcmeDemoBundle();
             $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
             $bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle();
             $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();

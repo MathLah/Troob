@@ -90,3 +90,7 @@ music_delete:
     path:     /music/{id}/delete
     defaults: { _controller: "TroobApiBundle:Music:delete" }
     requirements: { _method: post|delete }
+
+music_broswe:
+    path:	/music/broswe
+    defaults: { _controller: "TroobApiBundle:Music:broswe" }

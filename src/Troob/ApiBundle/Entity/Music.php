@@ -7,7 +7,6 @@ use Doctrine\ORM\Mapping\ManyToMany as ManyToMany;
 use Doctrine\ORM\Mapping\JoinTable as JoinTable;
 use Doctrine\ORM\Mapping\JoinColumn;
 
-use Troob\ApiBundle\Entity\Album;
 
 /**
  * Music
@@ -34,10 +33,10 @@ class Music
     private $name;
 
     /**
-     * @ManyToMany(targetEntity="Album")
+     * @ManyToMany(targetEntity="Album", inversedBy="Music", indexBy="aid")
      * @JoinTable(name="AssocAlbumMusic",
      *      joinColumns={@JoinColumn(name="mid", referencedColumnName="id")},
-     *      inverseJoinColumns={@JoinColumn(name="aid", referencedColumnName="id", unique=true)}
+     *      inverseJoinColumns={@JoinColumn(name="aid", referencedColumnName="id")}
      *      )
      */
     private $albums;
