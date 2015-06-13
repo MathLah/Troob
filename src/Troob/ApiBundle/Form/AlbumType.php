@@ -17,6 +17,10 @@ class AlbumType extends AbstractType
         $builder
             ->add('name')
             ->add('release')
+            ->add('bands', 'entity', array(
+            	'class' => 'Troob\ApiBundle\Entity\Band',
+            	'multiple' => true,
+        	))
         ;
     }
     
